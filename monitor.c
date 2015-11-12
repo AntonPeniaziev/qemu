@@ -235,19 +235,10 @@ Monitor *cur_mon;
 static void hmp_fizzbuzz(Monitor *mon, const QDict *qdict)
 {
 	uint32_t number = qdict_get_int(qdict, "number");
-	if (!(number % 3) && !(number % 5)) {
-		monitor_printf(mon, "fizzbuzz\n");
-		return;
-	}
-	if (!(number % 3)) {
-			monitor_printf(mon, "fizz\n");
-			return;
-	}
-	if (!(number % 5)) {
-		monitor_printf(mon, "buzz\n");
-		return;
-	}
-	monitor_printf(mon, "%d\n", number);
+	if (number % 3 && number % 5)
+		monitor_printf(mon, "%d\n", number);
+	else
+		monitor_printf(mon, "%s%s%s", number % 3 ? "" : "fizz", number % 5 ? "" : "buzz","\n");
 }
 
 static void monitor_command_cb(void *opaque, const char *cmdline,
