@@ -22,6 +22,21 @@ STEXI
 @findex help
 Show the help for all commands or just for command @var{cmd}.
 ETEXI
+    {
+    	.name		= "fizzbuzz",
+    	.args_type  = "number:i",
+    	.params     = "num",
+    	.help		= "print the number received as a parameter",
+    	.mhandler.cmd = hmp_fizzbuzz,
+    },
+STEXI
+@item fizzbuzz @var{num}
+@findex fizzbuzz
+Fizzbuzz command will print the number it receives as parameter.
+But for multiples of three print “fizz” instead of the number and 
+for the multiples of five print “buzz”. For numbers which are 
+multiples of both three and five print “fizzbuzz”.".
+ETEXI
 
     {
         .name       = "commit",
